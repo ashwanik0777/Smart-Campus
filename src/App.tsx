@@ -16,7 +16,7 @@ const objectivePoints = [
   'Online complaint registration with real-time status tracking',
   'Optimized technician and vendor allocation workflows',
   'Complete service history and audit-ready records',
-  'SLA-aware escalation and proactive alerting workflows',
+  'SLA (Service Level Agreement)-aware escalation and proactive alerting workflows',
   'Complaint closure with customer/staff verification and quality check',
   'Integrated inventory and material usage accountability',
   'Cross-role rating and feedback loop for service improvement',
@@ -26,7 +26,7 @@ const objectivePoints = [
 const architectureLayers = [
   {
     title: 'Presentation Layer',
-    detail: 'Web portal + PWA dashboards for customer/staff, technicians, admins, and vendors.',
+    detail: 'Web portal + PWA (Progressive Web Application) dashboards for customer/staff, technicians, admins, and vendors.',
   },
   {
     title: 'Application Layer',
@@ -42,7 +42,7 @@ const architectureLayers = [
   },
   {
     title: 'Security Layer',
-    detail: 'RBAC, authentication, authorization, password hashing, and secure API access controls.',
+    detail: 'RBAC (Role-Based Access Control), authentication, authorization, password hashing, and secure API (Application Programming Interface) access controls.',
   },
 ]
 
@@ -51,7 +51,12 @@ const moduleCatalog = [
     name: 'User & Access Module',
     owner: 'Super Admin',
     purpose: 'Manage users, roles, permissions, and policy-based access for every dashboard.',
-    subModules: ['Identity & SSO', 'RBAC Policy Engine', 'Session Manager', 'Access Audit Tracker'],
+    subModules: [
+      'Identity & SSO (Single Sign-On)',
+      'RBAC (Role-Based Access Control) Policy Engine',
+      'Session Manager',
+      'Access Audit Tracker',
+    ],
     capabilities: [
       'Role onboarding and profile lifecycle',
       'Role-Based Access Control (RBAC) and permission matrix',
@@ -60,7 +65,7 @@ const moduleCatalog = [
     ],
     workflows: [
       'User registration → role mapping → approval → activation',
-      'Login attempt → policy check → MFA/OTP validation → session issue',
+      'Login attempt → policy check → MFA (Multi-Factor Authentication)/OTP (One-Time Password) validation → session issue',
       'Role update → permission recalculation → policy propagation',
     ],
     automations: [
@@ -130,7 +135,7 @@ const moduleCatalog = [
     purpose: 'Assign complaints to the right technician using skill, location, workload, and SLA context.',
     subModules: [
       'Skill Matching Engine',
-      'SLA Rule Router',
+      'SLA (Service Level Agreement) Rule Router',
       'Workload Balancer',
       'Reassignment Controller',
     ],
@@ -153,10 +158,14 @@ const moduleCatalog = [
     validations: [
       'Technician active status check before assignment',
       'Skill-tag compatibility validation',
-      'SLA class to response-time policy binding',
+      'SLA (Service Level Agreement) class to response-time policy binding',
     ],
-    kpis: ['Assignment turnaround time', 'Reassignment count', 'SLA at-risk ticket count'],
-    integrations: ['Technician roster source', 'SLA policy service', 'Notification module'],
+    kpis: [
+      'Assignment turnaround time',
+      'Reassignment count',
+      'SLA (Service Level Agreement) at-risk ticket count',
+    ],
+    integrations: ['Technician roster source', 'SLA (Service Level Agreement) policy service', 'Notification module'],
     futureEnhancements: [
       'Optimization-based assignment using route efficiency',
       'Dynamic load balancing by shift prediction',
@@ -204,18 +213,18 @@ const moduleCatalog = [
     purpose: 'Deliver timely notifications and escalate delays using SLA rules and workflow thresholds.',
     subModules: ['Alert Composer', 'Escalation Engine', 'Reminder Scheduler', 'Delivery Tracker'],
     capabilities: [
-      'Multi-channel alerts (SMS, email, app notifications)',
-      'SLA breach detection and automatic escalation',
+      'Multi-channel alerts (SMS - Short Message Service, email, app notifications)',
+      'SLA (Service Level Agreement) breach detection and automatic escalation',
       'Role-targeted update subscriptions',
       'Reminder and follow-up scheduling',
     ],
     workflows: [
       'Event received → template select → role routing → delivery',
-      'SLA threshold cross → escalation ladder execute',
+      'SLA (Service Level Agreement) threshold cross → escalation ladder execute',
       'Delivery failure detect → retry strategy → fallback channel',
     ],
     automations: [
-      'Pre-SLA breach warnings to assignee and admin',
+      'Pre-SLA (Service Level Agreement) breach warnings to assignee and admin',
       'Auto reminder campaign for unresolved tickets',
       'Escalation matrix based on priority and zone',
     ],
@@ -292,7 +301,7 @@ const moduleCatalog = [
     ],
     kpis: ['Average satisfaction score', 'Low-rating recovery time', 'Feedback participation ratio'],
     integrations: ['Complaint closure events', 'Analytics insights engine', 'Admin corrective action queue'],
-    futureEnhancements: ['NLP-based sentiment intelligence', 'Voice feedback capture'],
+    futureEnhancements: ['NLP (Natural Language Processing)-based sentiment intelligence', 'Voice feedback capture'],
     inputs: ['Resolved complaint records', 'Role-level review forms', 'Service quality metrics'],
     outputs: ['Feedback scores', 'Corrective action recommendations', 'Quality index for analytics'],
     relatedModules: ['Complaint Intake Module', 'Technician Execution Module', 'Analytics Module'],
@@ -303,7 +312,7 @@ const moduleCatalog = [
     purpose: 'Generate operational insights for governance, planning, and predictive maintenance readiness.',
     subModules: ['KPI Dashboard Builder', 'Trend Intelligence', 'Scorecard Generator', 'Forecast Engine'],
     capabilities: [
-      'SLA, TAT, and first-time-fix dashboards',
+      'SLA (Service Level Agreement), TAT (Turnaround Time), and first-time-fix dashboards',
       'Role, location, and category performance analytics',
       'Feedback-driven quality scoring',
       'Predictive trend indicators for recurring faults',
@@ -321,11 +330,18 @@ const moduleCatalog = [
     validations: [
       'Metric definition consistency checks',
       'Data completeness checks before report generation',
-      'Cross-module reconciliation for SLA metrics',
+      'Cross-module reconciliation for SLA (Service Level Agreement) metrics',
     ],
-    kpis: ['SLA compliance %', 'Mean time to resolution', 'Recurring complaint reduction %'],
+    kpis: [
+      'SLA (Service Level Agreement) compliance %',
+      'Mean time to resolution',
+      'Recurring complaint reduction %',
+    ],
     integrations: ['Feedback module', 'Inventory module', 'Audit export service'],
-    futureEnhancements: ['Predictive maintenance ML model', 'Natural language analytics assistant'],
+    futureEnhancements: [
+      'Predictive maintenance ML (Machine Learning) model',
+      'Natural language analytics assistant',
+    ],
     inputs: ['Complaint lifecycle data', 'Feedback data', 'Inventory and technician productivity records'],
     outputs: ['KPI dashboards', 'Department/vendor scorecards', 'Forecast reports'],
     relatedModules: ['Feedback & Rating Module', 'Inventory Module', 'Audit & Compliance Module'],
@@ -366,14 +382,14 @@ const moduleCatalog = [
 ]
 
 const moduleRelations = [
-  'User & Access Module authorizes all role dashboards and APIs.',
+  'User & Access Module authorizes all role dashboards and APIs (Application Programming Interfaces).',
   'Complaint Intake Module creates tickets consumed by Assignment Module.',
   'Assignment Module pushes work orders to Technician Execution Module.',
   'Technician Execution Module updates status and requests closure.',
-  'Notification & Escalation Module listens to every status event and SLA timer.',
+  'Notification & Escalation Module listens to every status event and SLA (Service Level Agreement) timer.',
   'Inventory Module links each material issue to complaint and technician records.',
   'Feedback & Rating Module activates at resolution and updates quality metrics.',
-  'Analytics Module aggregates all module outputs for KPI and predictive insights.',
+  'Analytics Module aggregates all module outputs for KPI (Key Performance Indicator) and predictive insights.',
   'Audit & Compliance Module records every critical action across modules.',
 ]
 
@@ -438,28 +454,18 @@ const roleCards = [
 const roadmap = [
   {
     phase: 'Phase 1',
-    title: 'Product Foundation & UX Blueprint',
-    detail: 'Role-based screen design, complaint journey mapping, and reusable UI components.',
+    title: 'Frontend Foundation',
+    detail: 'Role-based UI design, dashboard layouts, and static data integration.',
   },
   {
     phase: 'Phase 2',
-    title: 'Core Workflow Implementation',
-    detail: 'Complaint intake, assignment, technician execution, and closure workflow APIs.',
+    title: 'Backend Integration',
+    detail: 'REST API development, MySQL integration, and authentication workflows.',
   },
   {
     phase: 'Phase 3',
-    title: 'Service Governance & Automation',
-    detail: 'SLA engines, escalation notifications, and inventory integration rollout.',
-  },
-  {
-    phase: 'Phase 4',
-    title: 'Quality Intelligence Layer',
-    detail: 'Feedback/rating analytics, performance benchmarking, and corrective action loops.',
-  },
-  {
-    phase: 'Phase 5',
-    title: 'Audit, Security & Scale',
-    detail: 'Compliance dashboards, audit evidence exports, and multi-campus scaling readiness.',
+    title: 'Advanced Intelligence',
+    detail: 'Analytics dashboards, report generation, and predictive maintenance capabilities.',
   },
 ]
 
@@ -645,7 +651,7 @@ function App() {
                       ))}
                     </ul>
 
-                    <h4 className="mt-3 text-sm font-semibold">KPIs</h4>
+                    <h4 className="mt-3 text-sm font-semibold">KPIs (Key Performance Indicators)</h4>
                     <ul className="mt-2 space-y-1 text-sm text-[rgb(var(--color-text-secondary))]">
                       {module.kpis.map((item) => (
                         <li key={item}>• {item}</li>
