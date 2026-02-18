@@ -402,6 +402,22 @@ const roleCards = [
       'Upload image/video evidence',
       'Give ratings and feedback',
     ],
+    operationalControls: [
+      'Reopen ticket with reason and supporting proof',
+      'Priority visibility for critical campus services',
+      'Service timeline view with assigned team details',
+      'Complaint history with filter by category/location',
+    ],
+    insightsReports: [
+      'Personal service response summary',
+      'Resolved vs pending ticket trend',
+      'Feedback submission and satisfaction trend',
+    ],
+    automations: [
+      'Auto acknowledgement after ticket creation',
+      'Reminder for pending feedback submissions',
+      'Escalation alerts when SLA is near breach',
+    ],
   },
   {
     title: 'Vendor',
@@ -411,6 +427,22 @@ const roleCards = [
       'Handle assignments and escalations',
       'Give ratings and feedback',
     ],
+    operationalControls: [
+      'Technician roster and capacity planning board',
+      'Assignment approval and reassignment controls',
+      'Cross-zone workload balancing',
+      'Material requirement planning for work orders',
+    ],
+    insightsReports: [
+      'Vendor-wise SLA compliance report',
+      'Technician productivity and first-time-fix report',
+      'Low-rating incident and recovery tracker',
+    ],
+    automations: [
+      'Auto assignment recommendations by skill and load',
+      'Pre-SLA breach warning to vendor manager',
+      'Delay-based corrective action queue creation',
+    ],
   },
   {
     title: 'Technician',
@@ -419,6 +451,22 @@ const roleCards = [
       'Update progress milestones',
       'Add completion proof',
       'Give ratings and feedback',
+    ],
+    operationalControls: [
+      'Daily task queue with priority badges',
+      'On-site checklist for category-wise compliance',
+      'Material usage logging linked to complaint ID',
+      'Closure request with mandatory completion notes',
+    ],
+    insightsReports: [
+      'Individual resolution time dashboard',
+      'Job completion and backlog trend',
+      'Quality score from customer/staff feedback',
+    ],
+    automations: [
+      'Auto reminder for delayed progress updates',
+      'Timestamp capture for each work stage',
+      'Closure proof validation before final submit',
     ],
   },
   
@@ -430,6 +478,22 @@ const roleCards = [
       'Adjust priority and SLA class',
       'Give ratings and feedback',
     ],
+    operationalControls: [
+      'Department-level queue governance by category/zone',
+      'Priority override and emergency routing',
+      'Escalation matrix execution and ownership tracking',
+      'Inter-department dependency coordination support',
+    ],
+    insightsReports: [
+      'Department SLA and turnaround report',
+      'Top recurring issue categories and hotspots',
+      'Vendor/technician service quality comparison',
+    ],
+    automations: [
+      'Auto escalation based on SLA thresholds',
+      'Daily unresolved critical tickets digest',
+      'Repeat-issue detection alerts for governance review',
+    ],
   },
   {
     title: 'Campus Admin',
@@ -439,6 +503,22 @@ const roleCards = [
       'Resource planning and optimization',
       'Give ratings and feedback',
     ],
+    operationalControls: [
+      'Campus-wide operations command view',
+      'Policy control for service and escalation standards',
+      'Resource allocation planning across departments',
+      'Strategic intervention for chronic backlog zones',
+    ],
+    insightsReports: [
+      'Campus KPI (Key Performance Indicator) dashboard',
+      'Zone-wise performance benchmarking',
+      'Cost-efficiency and utilization trends',
+    ],
+    automations: [
+      'Automated weekly governance summary',
+      'KPI threshold breach alerts',
+      'Risk-based action recommendation prompts',
+    ],
   },
   {
     title: 'Super Admin',
@@ -447,6 +527,22 @@ const roleCards = [
       'System and policy configuration',
       'Audit logs and compliance oversight',
       'Give ratings and feedback',
+    ],
+    operationalControls: [
+      'Role-based access and policy lifecycle governance',
+      'Security control baseline and hardening checks',
+      'Compliance evidence export and retention policy control',
+      'Platform configuration management and release governance',
+    ],
+    insightsReports: [
+      'Security event and anomaly dashboard',
+      'Audit coverage and policy breach report',
+      'System health, uptime, and governance score',
+    ],
+    automations: [
+      'Policy breach instant alerts with owner mapping',
+      'Periodic compliance health snapshots',
+      'Automated backup and audit archival reminders',
     ],
   },
 ]
@@ -707,6 +803,10 @@ function App() {
 
         <section className="rounded-2xl border border-[rgb(var(--color-border))] bg-[rgb(var(--color-card))] p-6 shadow-sm md:p-8">
           <h2 className="text-2xl font-semibold">Role-Based Dashboards</h2>
+          <p className="mt-2 text-sm text-[rgb(var(--color-text-secondary))]">
+            Professionally structured role dashboards combining execution actions, governance controls,
+            analytics visibility, and automation support for efficient service operations.
+          </p>
           <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {roleCards.map((role) => (
               <article
@@ -714,8 +814,30 @@ function App() {
                 className="rounded-xl border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] p-4"
               >
                 <h3 className="font-semibold">{role.title}</h3>
-                <ul className="mt-3 space-y-1 text-sm text-[rgb(var(--color-text-secondary))]">
+                <h4 className="mt-3 text-sm font-semibold">Core Actions</h4>
+                <ul className="mt-2 space-y-1 text-sm text-[rgb(var(--color-text-secondary))]">
                   {role.items.map((item) => (
+                    <li key={item}>• {item}</li>
+                  ))}
+                </ul>
+
+                <h4 className="mt-3 text-sm font-semibold">Operational Controls</h4>
+                <ul className="mt-2 space-y-1 text-sm text-[rgb(var(--color-text-secondary))]">
+                  {role.operationalControls.map((item) => (
+                    <li key={item}>• {item}</li>
+                  ))}
+                </ul>
+
+                <h4 className="mt-3 text-sm font-semibold">Insights & Reports</h4>
+                <ul className="mt-2 space-y-1 text-sm text-[rgb(var(--color-text-secondary))]">
+                  {role.insightsReports.map((item) => (
+                    <li key={item}>• {item}</li>
+                  ))}
+                </ul>
+
+                <h4 className="mt-3 text-sm font-semibold">Automation Support</h4>
+                <ul className="mt-2 space-y-1 text-sm text-[rgb(var(--color-text-secondary))]">
+                  {role.automations.map((item) => (
                     <li key={item}>• {item}</li>
                   ))}
                 </ul>
