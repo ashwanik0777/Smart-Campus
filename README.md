@@ -63,6 +63,46 @@ Create a **single unified digital platform** where customer/staff, technician, v
 - `npm run lint` — linting
 - `npm run preview` — production preview
 
+### Documentation Page (UI)
+- All detailed system documentation is now rendered inside a dedicated page component:
+	- `src/pages/DocumentationPage.tsx`
+- App entry is intentionally minimal and only mounts the documentation page:
+	- `src/App.tsx`
+
+### Module-Wise Code Structure (Scaffold Ready)
+
+```text
+src/
+	App.tsx
+	pages/
+		DocumentationPage.tsx
+	types/
+		documentation.ts
+	modules/
+		overview/
+			problemPoints.ts
+			objectivePoints.ts
+			architectureLayers.ts
+		core/
+			userAccess.module.ts
+			complaintIntake.module.ts
+			assignment.module.ts
+			technicianExecution.module.ts
+			notificationEscalation.module.ts
+			inventory.module.ts
+			billing.module.ts
+			feedbackRating.module.ts
+			analytics.module.ts
+			auditCompliance.module.ts
+			moduleCatalog.ts
+		roles/
+			roleCards.ts
+		relationships/
+			moduleRelations.ts
+		roadmap/
+			roadmap.ts
+```
+
 ---
 
 ## 5. Architecture Layers
@@ -344,7 +384,51 @@ All modules are independent in development and deployment planning, but intercon
 
 ---
 
-### M7. Feedback & Rating Module
+### M7. Billing Module
+
+**Owner:** Finance Team + Vendor + Campus Admin  
+**Purpose:** Complaint-linked billing, invoice lifecycle, and settlement governance with audit-ready transparency
+
+**Sub-modules**
+- Invoice Engine
+- Payment Tracking Desk
+- Vendor Settlement Manager
+- Billing Reconciliation Console
+
+**Core capabilities**
+- Auto-generate invoices from resolved complaint work orders
+- Track billed, paid, pending, disputed, and partially paid states
+- Vendor payout lifecycle and approval workflow management
+- Service and material cost breakdown visibility for governance
+
+**Key workflows**
+- Resolved ticket + material usage → invoice draft → finance validation → invoice publish
+- Payment received → ledger update → receipt generation → status sync
+- Vendor settlement request → verification → approval/rejection → payout close
+
+**Automation rules**
+- Auto-billing for eligible closed tickets
+- Pending payment reminders
+- Dispute escalation alerts for aging invoices
+
+**Validation rules**
+- Mandatory complaint and assignment linkage before invoice creation
+- Material and labor cost consistency checks
+- Duplicate invoice prevention and amount reconciliation rules
+
+**KPIs**
+- Invoice generation turnaround time
+- Collection efficiency ratio
+- Vendor settlement cycle duration
+
+**Outputs**
+- Invoices and receipts
+- Billing ledgers and reconciliation reports
+- Settlement records and financial alerts
+
+---
+
+### M8. Feedback & Rating Module
 
 **Owner:** All Roles  
 **Purpose:** Continuous service quality improvement
@@ -386,7 +470,7 @@ All modules are independent in development and deployment planning, but intercon
 
 ---
 
-### M8. Analytics Module
+### M9. Analytics Module
 
 **Owner:** Campus Admin + Super Admin  
 **Purpose:** Decision intelligence and performance governance
@@ -428,7 +512,7 @@ All modules are independent in development and deployment planning, but intercon
 
 ---
 
-### M9. Audit & Compliance Module
+### M10. Audit & Compliance Module
 
 **Owner:** Super Admin + Compliance Team  
 **Purpose:** Immutable traceability and compliance readiness
@@ -478,9 +562,10 @@ All modules are independent in development and deployment planning, but intercon
 4. Technician Execution performs job and closure request.
 5. Notification & Escalation monitors every status transition.
 6. Inventory maps material use to execution events.
-7. Feedback & Rating captures service quality response.
-8. Analytics consolidates operations + quality + governance metrics.
-9. Audit & Compliance stores immutable evidence across all stages.
+7. Billing converts closed work orders into invoice and settlement lifecycle.
+8. Feedback & Rating captures service quality response.
+9. Analytics consolidates operations + quality + governance metrics.
+10. Audit & Compliance stores immutable evidence across all stages.
 
 ---
 
@@ -512,6 +597,7 @@ All modules are independent in development and deployment planning, but intercon
 
 ### 9.1 Customer / Staff
 - Raise complaint, track status timeline, upload proof, view history
+- View service billing summary and invoice status
 - Give ratings and feedback at closure
 
 ### 9.2 Technician
@@ -520,6 +606,7 @@ All modules are independent in development and deployment planning, but intercon
 
 ### 9.3 Vendor
 - Monitor team workload, SLA risk, assignment status, score trends
+- Track invoice approvals, settlement status, and billing disputes
 - Give ratings and feedback on process and support quality
 
 ### 9.4 Department Admin
@@ -528,6 +615,7 @@ All modules are independent in development and deployment planning, but intercon
 
 ### 9.5 Campus Admin
 - Global governance, strategic analytics, resource optimization
+- Billing governance visibility and finance control monitoring
 - Give ratings and feedback for quality and policy decisions
 
 ### 9.6 Super Admin
@@ -544,6 +632,7 @@ All modules are independent in development and deployment planning, but intercon
 - SLA monitoring and escalation
 - Technician execution and evidence capture
 - Inventory issue/usage/reconciliation
+- Billing, invoice lifecycle, and settlement workflow
 - Feedback/rating loop across all roles
 - Analytics and scorecards
 - Immutable audit trails and compliance evidence
@@ -567,6 +656,7 @@ All modules are independent in development and deployment planning, but intercon
 - complaints, complaint_categories, complaint_status_logs
 - technicians, vendors, assignments
 - inventory_items, inventory_transactions, material_usage
+- billing_invoices, invoice_line_items, payment_transactions, vendor_settlements
 - feedback_responses, rating_dimensions, corrective_actions
 - notifications, delivery_logs, escalation_rules
 - audit_logs, compliance_violations
@@ -577,6 +667,7 @@ All modules are independent in development and deployment planning, but intercon
 - Complaint 1:N Assignments
 - Technician 1:N Assignments
 - Complaint 1:N MaterialUsage
+- Complaint 1:N BillingInvoices
 - Complaint 1:N FeedbackResponses
 - All critical actions → AuditLogs
 
@@ -590,6 +681,7 @@ All modules are independent in development and deployment planning, but intercon
 - `/assignments/*` → assign, reassign, queue governance
 - `/technician/*` → progress, proof, completion
 - `/inventory/*` → stock, issue, return, usage
+- `/billing/*` → invoice, payments, settlements, reconciliation
 - `/feedback/*` → submit, moderate, quality score
 - `/notifications/*` → alerts, reminders, escalation events
 - `/analytics/*` → KPIs, scorecards, trends

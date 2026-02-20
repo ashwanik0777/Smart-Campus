@@ -1,0 +1,23 @@
+import { analyticsModule } from './analytics.module'
+import { assignmentModule } from './assignment.module'
+import { auditComplianceModule } from './auditCompliance.module'
+import { billingModule } from './billing.module'
+import { complaintIntakeModule } from './complaintIntake.module'
+import { feedbackRatingModule } from './feedbackRating.module'
+import { inventoryModule } from './inventory.module'
+import { notificationEscalationModule } from './notificationEscalation.module'
+import { technicianExecutionModule } from './technicianExecution.module'
+import { userAccessModule } from './userAccess.module'
+
+export const moduleCatalog = [
+  userAccessModule,
+  complaintIntakeModule,
+  assignmentModule,
+  technicianExecutionModule,
+  notificationEscalationModule,
+  inventoryModule,
+  billingModule,
+  feedbackRatingModule,
+  analyticsModule,
+  auditComplianceModule,
+]
