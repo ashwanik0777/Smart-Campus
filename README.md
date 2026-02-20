@@ -2,421 +2,652 @@
 
 ## Gautam Buddha University
 
----
-
-## 1. Project Overview
-
-Gautam Buddha University operates a large and geographically distributed campus consisting of academic blocks, hostels, residential quarters, administrative offices, sports facilities, auditoriums, guest houses, and commercial areas. Managing maintenance and service operations across such a vast ecosystem using manual and fragmented processes results in inefficiencies, delays, and lack of accountability.
-
-The **Smart Campus Service & Maintenance Management System** is proposed as a centralized digital platform inspired by the Urban Company service aggregation model, adapted specifically for a university environment. The system will automate service request handling, technician assignment, monitoring, inventory usage, and analytics through role-based dashboards.
+A highly detailed, modular, role-based blueprint and frontend implementation for smart campus service operations.
 
 ---
 
-## 2. Problem Statement
+## 1. Executive Summary
 
-The current campus service management system faces the following issues:
+This project designs a complete **Service & Maintenance Management Platform** where every operational capability is split into separate modules, but all modules stay interconnected through workflow events, shared data contracts, and governance rules.
 
-* Manual complaint registration via phone calls or paper forms
-* No centralized tracking or monitoring system
-* Delayed response and resolution times
-* Poor coordination between departments, vendors, and technicians
-* Inefficient use of manpower and materials
-* No analytics for performance evaluation or predictive maintenance
+The current repository includes:
+- A detailed frontend prototype (React + TypeScript + Vite)
+- Expanded architecture and module relationships
+- Deep role-based dashboard definitions
+- Detailed product documentation for backend, data, and integration implementation
 
-A scalable, technology-driven solution is required to ensure transparency, efficiency, and accountability in campus operations.
-
----
-
-## 3. Objectives
-
-* Provide a single unified digital platform for all campus services
-* Enable online complaint registration and real-time tracking
-* Optimize technician and vendor resource allocation
-* Improve response time and service quality
-* Maintain complete service history and audit trails
-* Support data-driven decision making through analytics
+Primary objective:
+- Build a transparent, SLA-driven, auditable, and scalable campus service ecosystem.
 
 ---
 
-## 4. Technology Stack
+## 2. Business Problem
 
-* **Frontend:** React.js (Web + PWA)
-* **Backend:** PHP (RESTful APIs)
-* **Database:** MySQL (Relational Database)
-* **Authentication:** JWT / Session-based
-* **Hosting:** Cloud / University Server
+Campus service operations in large institutions generally fail due to:
+- Manual complaint registration (phone/counter/paper)
+- Fragmented channels and no single source of truth
+- Delays due to poor assignment governance
+- Weak escalation and SLA visibility
+- No closure quality check and repeat complaint control
+- Low integration between technician execution and inventory
+- Weak reporting and little predictive insight
+- Missing continuous quality feedback from all stakeholders
+
+---
+
+## 3. Vision & Product Principles
+
+### Vision
+Create a **single unified digital platform** where customer/staff, technician, vendor, and administrators collaborate on one transparent complaint lifecycle.
+
+### Product principles
+1. Modular and scalable by design
+2. Separate ownership with shared governance
+3. SLA-first operational model
+4. Data integrity and auditability by default
+5. "Give ratings and feedback" as mandatory quality loop
+6. Actionable analytics for leadership decisions
 
 ---
 
-## 5. System Architecture (Layered Architecture)
+## 4. Repository Technology Stack
 
-The Smart Campus Service & Maintenance Management System follows a **layered, modular, and scalable architecture**. Each layer has a clearly defined responsibility, enabling maintainability, security, and future extensibility.
+- Frontend: React 19 + TypeScript
+- Build Tool: Vite
+- Styling: Tailwind CSS (v4)
+- Linting: ESLint
+
+### Commands
+- `npm run dev` — development server
+- `npm run build` — type-check + production build
+- `npm run lint` — linting
+- `npm run preview` — production preview
 
 ---
+
+## 5. Architecture Layers
 
 ### 5.1 Presentation Layer
-
-This layer represents the **user-facing interfaces** of the system.
-
-**Components:**
-
-* **Web Portal**
-
-  * Admin Dashboard
-  * Vendor Dashboard
-  * Department Supervisor Dashboard
-* **Mobile / Web App (PWA)**
-
-  * Students
-  * Faculty & Staff
-  * Technicians
-
-**Responsibilities:**
-
-* User interaction and data input
-* Role-based UI rendering
-* Dashboard visualization
-* Form validation
-* API consumption
-
-**Technologies:**
-
-* React.js
-* HTML5, CSS3, JavaScript
-* Responsive & Mobile-first Design
-
----
+- Role-based web/PWA dashboards
+- Complaint forms, queue views, reports, admin controls
 
 ### 5.2 Application Layer
-
-This is the **core business logic layer** of the system. All rules, workflows, and decision-making processes are handled here.
-
-**Modules:**
-
-* **Complaint Management Service**
-
-  * Complaint registration
-  * Status updates
-  * Priority handling
-
-* **CRM & Workflow Engine**
-
-  * Complaint lifecycle management
-  * Approval and escalation flows
-
-* **Technician Allocation Engine**
-
-  * Skill-based technician mapping
-  * Availability-based assignment
-
-* **Feedback & Rating Engine**
-
-  * User feedback collection
-  * Technician and vendor ratings
-
-* **Notification & Escalation Engine**
-
-  * Automated alerts
-  * SLA-based escalation
-
-* **Analytics & Reporting Engine**
-
-  * Performance metrics
-  * Usage trends
-  * Decision support reports
-
-**Technologies:**
-
-* PHP (REST APIs)
-* Business Logic Services
-
----
+- Core workflow engines (intake, assignment, execution, escalation, feedback, analytics)
 
 ### 5.3 Integration Layer
-
-This layer allows the system to **communicate with external services and smart infrastructure**.
-
-**Integrations:**
-
-* **IoT Sensor Gateway**
-
-  * Water leakage detection
-  * Power consumption monitoring
-  * HVAC fault alerts
-
-* **GIS & Map Services**
-
-  * Campus location mapping
-  * Complaint heatmaps
-
-* **Communication Services**
-
-  * SMS API
-  * Email Services
-  * WhatsApp Notifications
-
-**Purpose:**
-
-* Enable real-time monitoring
-* Support smart campus capabilities
-* Improve response time
-
----
+- Notifications (SMS/email/WhatsApp)
+- Future-ready IoT and GIS integration
 
 ### 5.4 Data Layer
-
-The Data Layer is responsible for **data storage, integrity, and retrieval**.
-
-**Databases:**
-
-* **Centralized Campus Service Database**
-
-  * Users
-  * Complaints
-  * Assignments
-  * Inventory
-
-* **Feedback Database (Role-Segregated)**
-
-  * Student feedback
-  * Staff feedback
-  * Technician ratings
-
-* **Logs & Audit Database**
-
-  * User activity logs
-  * System events
-  * Security audits
-
-**Characteristics:**
-
-* Relational database model
-* Foreign key constraints
-* Transaction management
-
----
+- Relational model for users, complaints, assignments, inventory, feedback, logs
 
 ### 5.5 Security Layer
-
-The Security Layer ensures **data protection, access control, and system integrity**.
-
-**Security Mechanisms:**
-
-* **Role-Based Access Control (RBAC)**
-
-  * Role-specific permissions
-
-* **Authentication**
-
-  * Secure login mechanisms
-  * Token/session-based access
-
-* **Authorization**
-
-  * API-level access checks
-
-* **Encryption**
-
-  * Password hashing
-  * Secure data transmission
+- Authentication, authorization, RBAC, policy enforcement, audit trails
 
 ---
 
-## 6. User Roles & Dashboards
+## 6. Core Modules (Deep Detailed)
 
-### 6.1 Student / Staff Dashboard
-
-* Raise service requests
-* Select category, location, and priority
-* Upload images/videos
-* Track real-time status
-* View complaint history
-* Provide feedback and ratings
-
-### 6.2 Technician Dashboard
-
-* View assigned jobs
-* Accept / reject tasks
-* Update work status
-* Upload completion proof
-* Mark material usage
-* View work history
-
-### 6.3 Vendor Dashboard
-
-* Manage technicians
-* Assign jobs
-* Monitor SLA compliance
-* Track invoices and payments
-* View performance analytics
-
-### 6.4 Department Admin Dashboard
-
-* Monitor area-specific complaints
-* Approve or escalate requests
-* Change priority levels
-* Generate department reports
-
-### 6.5 Central Campus Admin Dashboard (Smart Campus CRM)
-
-* View all campus complaints
-* Manage vendors and technicians
-* Monitor SLA and response times
-* View analytics and reports
-* Resource planning
-
-### 6.6 Inventory / Store Dashboard
-
-* Manage material stock
-* Issue materials to technicians
-* Low stock alerts
-* Track material usage
-
-### 6.7 Super Admin Dashboard
-
-* User and role management
-* Permission control
-* System configuration
-* Audit logs and backups
+All modules are independent in development and deployment planning, but interconnected through events and data contracts.
 
 ---
 
-## 7. Functional Requirements
+### M1. User & Access Module
 
-* User authentication and authorization
-* Role-based access control (RBAC)
-* Online complaint registration
-* Technician assignment workflow
-* Status tracking and notifications
-* Feedback and rating system
-* Inventory and material tracking
-* Analytics and reporting
+**Owner:** Super Admin  
+**Purpose:** Role lifecycle, secure access, policy enforcement
 
----
+**Sub-modules**
+- Identity & SSO
+- RBAC Policy Engine
+- Session Manager
+- Access Audit Tracker
 
-## 8. Non-Functional Requirements
+**Core capabilities**
+- User onboarding and profile lifecycle
+- Role-permission matrix governance
+- Account lock/reset and secure login policy
+- Session and access activity tracing
 
-* Responsive and mobile-first UI
-* Secure data handling
-* Scalable and modular architecture
-* High availability and reliability
-* Easy usability and accessibility
+**Key workflows**
+- Registration → role mapping → approval → activation
+- Login → policy validation → OTP/MFA (future) → session issue
+- Role updates → permission recalculation → access propagation
 
----
+**Automation rules**
+- Inactive account suspension
+- High-risk login force logout
+- Credential hygiene reminders
 
-## 9. Database Design
+**Validation rules**
+- Unique identity checks
+- Strong password policy
+- Permission conflict detection
 
-### 9.1 Core Tables
+**KPIs**
+- Unauthorized access blocked
+- Failed login ratio
+- Session integrity score
 
-* users
-* roles
-* departments
-* locations
-* complaints
-* complaint_categories
-* technicians
-* vendors
-* assignments
-* status_logs
-* inventory
-* material_usage
-* feedback
-* notifications
+**Outputs**
+- Secure sessions, role-bound access tokens, access logs
 
 ---
 
-## 10. ER Diagram (Mermaid Format)
+### M2. Complaint Intake Module
 
-```mermaid
-erDiagram
-    USERS ||--o{ COMPLAINTS : raises
-    ROLES ||--o{ USERS : assigned
-    DEPARTMENTS ||--o{ USERS : contains
-    LOCATIONS ||--o{ COMPLAINTS : occurs_at
-    COMPLAINT_CATEGORIES ||--o{ COMPLAINTS : classifies
-    VENDORS ||--o{ TECHNICIANS : employs
-    COMPLAINTS ||--o{ ASSIGNMENTS : has
-    TECHNICIANS ||--o{ ASSIGNMENTS : works_on
-    COMPLAINTS ||--o{ STATUS_LOGS : updates
-    INVENTORY ||--o{ MATERIAL_USAGE : tracks
-    TECHNICIANS ||--o{ MATERIAL_USAGE : uses
-    COMPLAINTS ||--o{ FEEDBACK : receives
-```
+**Owner:** Customer / Staff  
+**Purpose:** Structured complaint registration with rich metadata
 
----
+**Sub-modules**
+- Smart Complaint Form Engine
+- Category & Location Mapper
+- Ticket ID Generator
+- Complaint Timeline Builder
 
-## 11. Sample Table Structure (High Level)
+**Core capabilities**
+- Complaint creation with category/location/priority
+- Media proof upload (image/video)
+- Time-stamped unique complaint ticket creation
+- Complaint status timeline initialization
 
-### users
+**Key workflows**
+- Create complaint → validate → generate ticket → queue
+- Duplicate/frequent issue hinting
+- Closure reopen request handling
 
-* id (PK)
-* name
-* email
-* phone
-* role_id (FK)
-* department_id (FK)
+**Automation rules**
+- Auto acknowledgment messages
+- Priority recommendation by severity
+- Duplicate complaint detection hints
 
-### complaints
+**Validation rules**
+- Mandatory category and location
+- Media format/size checks
+- Actionable description quality rules
 
-* id (PK)
-* user_id (FK)
-* category_id (FK)
-* location_id (FK)
-* priority
-* description
-* status
-* created_at
+**KPIs**
+- Complaint creation completion rate
+- Reopen ratio
+- Duplicate complaint frequency
 
-### technicians
-
-* id (PK)
-* vendor_id (FK)
-* skill_type
-* availability_status
+**Outputs**
+- Queue-ready complaint payload, initial status logs
 
 ---
 
-## 12. Development Roadmap
+### M3. Assignment Module
 
-### Phase 1: Frontend
+**Owner:** Vendor + Department Admin  
+**Purpose:** Right technician assignment with SLA intelligence
 
-* Role-based UI design
-* Dashboard layouts
-* Static data integration
+**Sub-modules**
+- Skill Matching Engine
+- SLA Rule Router
+- Workload Balancer
+- Reassignment Controller
 
-### Phase 2: Backend
+**Core capabilities**
+- Skill and availability based assignment
+- Assisted/manual assignment controls
+- Reassignment and escalation
+- Vendor/technician workload optimization
 
-* API development
-* Database integration
-* Authentication
+**Key workflows**
+- Ticket fetch → match score → assignment
+- No-eligible technician → escalation path
+- Delay risk detection → fast-track reassignment
 
-### Phase 3: Advanced Features
+**Automation rules**
+- Auto assignment for high confidence cases
+- Pre-breach SLA warning generation
+- Delay-based reassignment recommendation
 
-* Analytics dashboards
-* Reports
-* Predictive maintenance
+**Validation rules**
+- Technician active status enforcement
+- Skill-tag and category compatibility
+- SLA class linkage checks
+
+**KPIs**
+- Assignment turnaround time
+- Reassignment rate
+- SLA risk exposure count
+
+**Outputs**
+- Work orders, assignment logs, escalation triggers
 
 ---
 
-## 13. Expected Outcomes
+### M4. Technician Execution Module
 
-* Reduced service resolution time
-* Improved transparency
-* Efficient resource utilization
-* Better campus experience
-* Data-driven administration
+**Owner:** Technician  
+**Purpose:** End-to-end field execution and closure readiness
+
+**Sub-modules**
+- Work Order Inbox
+- Progress Tracker
+- Proof Capture Unit
+- Closure Confirmation
+
+**Core capabilities**
+- Job acceptance and progress updates
+- Before/after evidence upload
+- Material usage declaration
+- Resolution summary and closure request
+
+**Key workflows**
+- Accept work order → execute → update milestones
+- Material consume → usage mapping → verification
+- Completion submit → closure review → feedback trigger
+
+**Automation rules**
+- Stage update reminders
+- Auto timestamps per stage
+- Closure checklist prompts
+
+**Validation rules**
+- Mandatory proof for critical categories
+- Material and complaint linkage checks
+- Completion note quality checks
+
+**KPIs**
+- First-time fix rate
+- Average resolution duration
+- Closure proof compliance
+
+**Outputs**
+- Resolution notes, proof artifacts, closure request
 
 ---
 
-## 14. Future Enhancements
+### M5. Notification & Escalation Module
 
-* IoT-based fault detection
-* AI-based predictive maintenance
-* Mobile app with push notifications
-* GIS-based campus mapping
+**Owner:** System + Department Admin  
+**Purpose:** Timely communication and SLA governance
+
+**Sub-modules**
+- Alert Composer
+- Escalation Engine
+- Reminder Scheduler
+- Delivery Tracker
+
+**Core capabilities**
+- Multi-channel notifications
+- SLA breach detection and escalation ladder
+- Role-targeted subscriptions
+- Follow-up reminders
+
+**Key workflows**
+- Event → template selection → role route → delivery
+- SLA threshold breach → escalation execution
+- Delivery failure → retry → fallback channel
+
+**Automation rules**
+- Pre-breach warnings
+- Reminder campaigns
+- Priority-wise escalation matrix
+
+**Validation rules**
+- Template integrity checks
+- Notification preference compliance
+- Escalation permission checks
+
+**KPIs**
+- Delivery success rate
+- Escalation response lag
+- Reminder effectiveness score
+
+**Outputs**
+- Alert events, escalation logs, communication audit trail
 
 ---
 
-## 15. Conclusion
+### M6. Inventory Module
 
-The Smart Campus Service & Maintenance Management System will serve as a unified digital backbone for Gautam Buddha University, transforming traditional manual processes into a smart, efficient, transparent, and scalable system aligned with modern digital governance principles.
+**Owner:** Store + Vendor  
+**Purpose:** Material control linked with complaint execution
+
+**Sub-modules**
+- Stock Ledger
+- Issue/Return Desk
+- Usage Reconciliation
+- Procurement Alert Board
+
+**Core capabilities**
+- Stock maintenance and threshold tracking
+- Technician issue/return management
+- Material usage reconciliation per complaint
+- Low-stock alerts and procurement support
+
+**Key workflows**
+- Issue request → approval → dispatch
+- Usage submit → complaint map → ledger update
+- Threshold breach → procurement trigger
+
+**Automation rules**
+- Auto low-stock alerts
+- Usage anomaly detection
+- Pending return reminders
+
+**Validation rules**
+- Stock availability pre-check
+- Mandatory complaint mapping
+- Negative stock prevention
+
+**KPIs**
+- Stock-out incidents
+- Issue-vs-usage mismatch ratio
+- Replenishment cycle time
+
+**Outputs**
+- Updated inventory ledger, usage statements, purchase alerts
+
+---
+
+### M7. Feedback & Rating Module
+
+**Owner:** All Roles  
+**Purpose:** Continuous service quality improvement
+
+**Sub-modules**
+- Rating Form Engine
+- Comment Analyzer
+- Quality Index Calculator
+- Corrective Action Queue
+
+**Core capabilities**
+- Give ratings and feedback after each resolved ticket
+- Role-wise weighted feedback scoring
+- Comment moderation and follow-up actions
+- Satisfaction and root-cause trends
+
+**Key workflows**
+- Closure → feedback prompt → score capture → publish
+- Low score detection → corrective task creation
+- Trend decline detection → governance escalation
+
+**Automation rules**
+- Feedback reminder nudges
+- Auto escalation for low ratings
+- Comment auto-tagging by issue theme
+
+**Validation rules**
+- One response per role per ticket
+- Content moderation policy checks
+- Weighted scoring consistency checks
+
+**KPIs**
+- Satisfaction score
+- Participation ratio
+- Low-score recovery time
+
+**Outputs**
+- Quality scores, feedback analytics, corrective action triggers
+
+---
+
+### M8. Analytics Module
+
+**Owner:** Campus Admin + Super Admin  
+**Purpose:** Decision intelligence and performance governance
+
+**Sub-modules**
+- KPI Dashboard Builder
+- Trend Intelligence
+- Scorecard Generator
+- Forecast Engine
+
+**Core capabilities**
+- SLA/TAT/First-Time-Fix dashboards
+- Category/location/vendor/technician analytics
+- Feedback quality scoring and trends
+- Recurring issue prediction indicators
+
+**Key workflows**
+- Event ingest → aggregate → dashboard refresh
+- Weekly/monthly close → scorecard generation
+- Anomaly identify → recommendation publish
+
+**Automation rules**
+- Scheduled report generation
+- KPI threshold breach alerts
+- Dashboard cache refresh policy
+
+**Validation rules**
+- Metric definition consistency
+- Data completeness checks
+- Cross-module reconciliation checks
+
+**KPIs**
+- SLA compliance
+- Mean time to resolution
+- Recurring fault reduction
+
+**Outputs**
+- KPI dashboards, scorecards, forecast reports
+
+---
+
+### M9. Audit & Compliance Module
+
+**Owner:** Super Admin + Compliance Team  
+**Purpose:** Immutable traceability and compliance readiness
+
+**Sub-modules**
+- Audit Collector
+- Compliance Rule Monitor
+- Evidence Export
+- Retention Controller
+
+**Core capabilities**
+- Action-level immutable logging
+- Permission and policy change tracking
+- Compliance violation detection
+- Export-ready audit evidence
+
+**Key workflows**
+- Event capture → index → retention tag
+- Scheduled compliance check → violation alert
+- Audit request → evidence pack generation
+
+**Automation rules**
+- Tamper detection notifications
+- Policy breach escalation
+- Compliance health snapshots
+
+**Validation rules**
+- Log chain integrity checks
+- Retention policy enforcement checks
+- Secure evidence access controls
+
+**KPIs**
+- Audit coverage percentage
+- Violation response time
+- Evidence export turnaround time
+
+**Outputs**
+- Audit reports, risk flags, compliance evidence bundles
+
+---
+
+## 7. Inter-Module Relationship Map
+
+1. User & Access authorizes every role action.
+2. Complaint Intake creates standardized ticket payload.
+3. Assignment routes ticket to best-fit technician/vendor.
+4. Technician Execution performs job and closure request.
+5. Notification & Escalation monitors every status transition.
+6. Inventory maps material use to execution events.
+7. Feedback & Rating captures service quality response.
+8. Analytics consolidates operations + quality + governance metrics.
+9. Audit & Compliance stores immutable evidence across all stages.
+
+---
+
+## 8. Additional Feature Packs (Extra Additions)
+
+### 8.1 Smart Priority Engine
+- Auto severity scoring by category, location criticality, and impact
+- VIP/service critical zone prioritization
+
+### 8.2 Duplicate Complaint Intelligence
+- Suggest existing open ticket with same symptom/location
+- Reduce repeated registrations and noise
+
+### 8.3 Corrective Action Management
+- Auto create action item for repeated low ratings
+- Owner assignment and closure tracking for quality actions
+
+### 8.4 Service Contract Governance
+- Vendor SLA adherence tracking by contract
+- Performance penalties and quality incentive indicators
+
+### 8.5 Knowledge Base Suggestions
+- Technician solution history for recurring problems
+- Faster fixes through reusable closure patterns
+
+---
+
+## 9. Role Dashboards
+
+### 9.1 Customer / Staff
+- Raise complaint, track status timeline, upload proof, view history
+- Give ratings and feedback at closure
+
+### 9.2 Technician
+- Accept/execute jobs, update progress, upload proof, record material use
+- Give ratings and feedback for workflow and assignment quality
+
+### 9.3 Vendor
+- Monitor team workload, SLA risk, assignment status, score trends
+- Give ratings and feedback on process and support quality
+
+### 9.4 Department Admin
+- Priority control, approval/escalation, area performance reports
+- Give ratings and feedback for operational governance
+
+### 9.5 Campus Admin
+- Global governance, strategic analytics, resource optimization
+- Give ratings and feedback for quality and policy decisions
+
+### 9.6 Super Admin
+- Policy/RBAC controls, security governance, compliance monitoring
+- Give ratings and feedback on system-level process quality
+
+---
+
+## 10. Functional Requirements
+
+- Secure auth + RBAC
+- End-to-end complaint lifecycle
+- Smart assignment and reassignment
+- SLA monitoring and escalation
+- Technician execution and evidence capture
+- Inventory issue/usage/reconciliation
+- Feedback/rating loop across all roles
+- Analytics and scorecards
+- Immutable audit trails and compliance evidence
+
+---
+
+## 11. Non-Functional Requirements
+
+- High scalability with modular decomposition
+- Responsive and accessible UI
+- Policy-compliant secure data handling
+- Availability and reliability for service-critical operations
+- Full traceability and observability
+
+---
+
+## 12. Data Model Blueprint
+
+### 12.1 Core entities
+- users, roles, permissions, departments
+- complaints, complaint_categories, complaint_status_logs
+- technicians, vendors, assignments
+- inventory_items, inventory_transactions, material_usage
+- feedback_responses, rating_dimensions, corrective_actions
+- notifications, delivery_logs, escalation_rules
+- audit_logs, compliance_violations
+
+### 12.2 Key relations
+- User 1:N Complaints
+- Complaint 1:N StatusLogs
+- Complaint 1:N Assignments
+- Technician 1:N Assignments
+- Complaint 1:N MaterialUsage
+- Complaint 1:N FeedbackResponses
+- All critical actions → AuditLogs
+
+---
+
+## 13. API Domain Blueprint
+
+- `/auth/*` → login, token, role policy
+- `/users/*` → user profile and role management
+- `/complaints/*` → create, update, list, close, reopen
+- `/assignments/*` → assign, reassign, queue governance
+- `/technician/*` → progress, proof, completion
+- `/inventory/*` → stock, issue, return, usage
+- `/feedback/*` → submit, moderate, quality score
+- `/notifications/*` → alerts, reminders, escalation events
+- `/analytics/*` → KPIs, scorecards, trends
+- `/audit/*` → logs, evidence export, compliance checks
+
+---
+
+## 14. Development Roadmap
+
+### Phase 1: Product Foundation & UX Blueprint
+- Information architecture, role journeys, component system
+- Module contracts and shared payload standards
+
+### Phase 2: Core Workflow Implementation
+- Intake + assignment + execution + closure backend
+- Authentication and role policy enforcement
+
+### Phase 3: Governance & Automation
+- SLA engines, notification scheduler, escalation matrix
+- Inventory and usage reconciliation
+
+### Phase 4: Quality Intelligence
+- Rating/feedback analytics, corrective action queue
+- Vendor/technician quality scorecards
+
+### Phase 5: Audit, Security & Scale
+- Compliance dashboards, audit evidence exports
+- Multi-campus readiness and performance optimization
+
+---
+
+## 15. Expected Outcomes
+
+- Significant reduction in resolution delays
+- Higher service quality through rating-feedback loops
+- Better resource governance and utilization
+- Strong compliance readiness and traceability
+- Leadership-ready analytics for strategic planning
+
+---
+
+## 16. Local Setup
+
+1. Install dependencies: `npm install`
+2. Run development server: `npm run dev`
+3. Build production bundle: `npm run build`
+4. Preview build: `npm run preview`
+
+---
+
+## 17. Repository Pointers
+
+- Main UI file: `src/App.tsx`
+- App bootstrap: `src/main.tsx`
+- Styling: `src/App.css`, `src/index.css`
+
+---
+
+## 18. Conclusion
+
+This repository now contains a **deeply detailed, module-first, enterprise-ready blueprint** for Smart Campus Service & Maintenance Management. Modules are separate, rich in features, and strongly interconnected, making the project suitable for phased implementation with strong governance, quality, and scale.
