@@ -1,7 +1,7 @@
-import DocumentationPage from './pages/Documentation'
+import Documentation from './pages/Documentation'
 
 function App() {
-  return <DocumentationPage />
+  return <Documentation/>
 }
 
 export default App
