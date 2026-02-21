@@ -19,8 +19,8 @@ function App() {
       <Routes>
         <Route path="/" element={<AppLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="docs" element={<DocumentationPage />} />
           <Route path="Documentation" element={<DocumentationPage />} />
+          <Route path="Docs" element={<DocumentationPage />} />
           <Route path="modules/user-access" element={<UserAccessPage />} />
           <Route path="modules/complaint-intake" element={<ComplaintIntakePage />} />
           <Route path="modules/assignment" element={<AssignmentPage />} />
