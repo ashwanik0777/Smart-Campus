@@ -4,7 +4,7 @@ function ComplaintIntakePage() {
   return (
     <UnderDevelopment
       title="Complaint Intake Module"
-      subtitle="Complaint registration forms, media upload flow, validation rules, and ticket generation logic yahan implement hoga."
+      subtitle="Complaint registration forms, media upload flow, validation rules, and ticket generation logic will be implemented here."
     />
   )
 }

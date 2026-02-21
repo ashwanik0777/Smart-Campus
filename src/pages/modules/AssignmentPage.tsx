@@ -4,7 +4,7 @@ function AssignmentPage() {
   return (
     <UnderDevelopment
       title="Assignment Module"
-      subtitle="Technician/vendor assignment engine, SLA-based routing, and reassignment workflows yahan implement honge."
+      subtitle="The technician and vendor assignment engine, SLA-based routing, and reassignment workflows will be implemented here."
     />
   )
 }

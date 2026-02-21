@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { moduleCatalog } from '../modules/core/moduleCatalog'
 import { architectureLayers } from '../modules/overview/architectureLayers'
 import { objectivePoints } from '../modules/overview/objectivePoints'
@@ -8,26 +8,6 @@ import { roleCards } from '../modules/roles/roleCards'
 import { roadmap } from '../modules/roadmap/roadmap'
 
 function DocumentationPage() {
-  const [isDark, setIsDark] = useState(false)
-
-  useEffect(() => {
-    const storedTheme = window.localStorage.getItem('theme')
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    const shouldUseDark = storedTheme ? storedTheme === 'dark' : prefersDark
-
-    setIsDark(shouldUseDark)
-    document.documentElement.classList.toggle('dark', shouldUseDark)
-  }, [])
-
-  const toggleTheme = () => {
-    setIsDark((previous) => {
-      const next = !previous
-      document.documentElement.classList.toggle('dark', next)
-      window.localStorage.setItem('theme', next ? 'dark' : 'light')
-      return next
-    })
-  }
-
   const pageSubtitle = useMemo(
     () => 'Smart Campus Service & Maintenance Management System for Gautam Buddha University',
     [],
@@ -37,26 +17,16 @@ function DocumentationPage() {
     <main className="min-h-screen px-4 py-8 md:px-8 lg:px-12">
       <div className="mx-auto max-w-7xl space-y-8">
         <header className="rounded-2xl border border-[rgb(var(--color-border))] bg-[rgb(var(--color-card))] p-6 shadow-sm md:p-8">
-          <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-wide text-[rgb(var(--color-text-secondary))]">
-                Gautam Buddha University
-              </p>
-              <h1 className="mt-2 text-3xl font-bold leading-tight md:text-4xl">{pageSubtitle}</h1>
-              <p className="mt-3 max-w-3xl text-[rgb(var(--color-text-secondary))]">
-                A centralized digital platform inspired by service aggregation workflows to improve
-                maintenance efficiency, transparency, accountability, and continuous quality
-                improvement across a distributed campus.
-              </p>
-            </div>
-
-            <button
-              type="button"
-              onClick={toggleTheme}
-              className="inline-flex items-center justify-center rounded-xl border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] px-4 py-2 text-sm font-semibold text-[rgb(var(--color-text-primary))] hover:bg-[rgb(var(--color-card))]"
-            >
-              {isDark ? '☀️ Light Theme' : '🌙 Dark Theme'}
-            </button>
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-wide text-[rgb(var(--color-text-secondary))]">
+              Gautam Buddha University
+            </p>
+            <h1 className="mt-2 text-3xl font-bold leading-tight md:text-4xl">{pageSubtitle}</h1>
+            <p className="mt-3 max-w-3xl text-[rgb(var(--color-text-secondary))]">
+              A centralized digital platform inspired by service aggregation workflows to improve
+              maintenance efficiency, transparency, accountability, and continuous quality
+              improvement across a distributed campus.
+            </p>
           </div>
         </header>
 
