@@ -6,6 +6,7 @@ import { complaintIntakeModule } from './complaintIntake.module'
 import { feedbackRatingModule } from './feedbackRating.module'
 import { inventoryModule } from './inventory.module'
 import { notificationEscalationModule } from './notificationEscalation.module'
+import { resourceAllocationBookingModule } from './resourceAllocationBooking.module'
 import { technicianExecutionModule } from './technicianExecution.module'
 import { userAccessModule } from './userAccess.module'
 
@@ -16,6 +17,7 @@ export const moduleCatalog = [
   technicianExecutionModule,
   notificationEscalationModule,
   inventoryModule,
+  resourceAllocationBookingModule,
   billingModule,
   feedbackRatingModule,
   analyticsModule,

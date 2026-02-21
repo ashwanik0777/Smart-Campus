@@ -10,6 +10,7 @@ import ComplaintIntakePage from './pages/modules/ComplaintIntakePage'
 import FeedbackRatingPage from './pages/modules/FeedbackRatingPage'
 import InventoryPage from './pages/modules/InventoryPage'
 import NotificationEscalationPage from './pages/modules/NotificationEscalationPage'
+import ResourceAllocationBookingPage from './pages/modules/ResourceAllocationBookingPage'
 import TechnicianExecutionPage from './pages/modules/TechnicianExecutionPage'
 import UserAccessPage from './pages/modules/UserAccessPage'
 
@@ -31,6 +32,10 @@ function App() {
           <Route path="modules/analytics" element={<AnalyticsPage />} />
           <Route path="modules/audit-compliance" element={<AuditCompliancePage />} />
           <Route path="modules/billing" element={<BillingPage />} />
+          <Route
+            path="modules/resource-allocation-booking"
+            element={<ResourceAllocationBookingPage />}
+          />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

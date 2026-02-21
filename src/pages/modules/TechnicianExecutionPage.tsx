@@ -4,7 +4,7 @@ function TechnicianExecutionPage() {
   return (
     <UnderDevelopment
       title="Technician Execution Module"
-      subtitle="Job progress tracking, completion proof capture, and material usage execution layer yahan build hoga."
+      subtitle="The job progress tracker, completion proof capture flow, and material usage execution layer will be built here."
     />
   )
 }

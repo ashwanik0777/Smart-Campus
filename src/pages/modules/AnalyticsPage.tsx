@@ -4,7 +4,7 @@ function AnalyticsPage() {
   return (
     <UnderDevelopment
       title="Analytics Module"
-      subtitle="KPI dashboards, trend intelligence, scorecards, and forecasting layer yahan implement hogi."
+      subtitle="KPI dashboards, trend intelligence, scorecards, and the forecasting layer will be implemented here."
     />
   )
 }
