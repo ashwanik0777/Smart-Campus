@@ -1,0 +1,13 @@
+export const moduleRelations = [
+  'User & Access Module authorizes all role dashboards and APIs (Application Programming Interfaces).',
+  'Complaint Intake Module creates tickets consumed by Assignment Module.',
+  'Assignment Module pushes work orders to Technician Execution Module.',
+  'Technician Execution Module updates status and requests closure.',
+  'Notification & Escalation Module listens to every status event and SLA (Service Level Agreement) timer.',
+  'Inventory Module links each material issue to complaint and technician records.',
+  'Billing Module converts closed complaint + material usage data into invoices and settlement workflows.',
+  'Feedback & Rating Module activates at resolution and updates quality metrics.',
+  'Billing Module shares cost and collection data with Analytics Module for governance insights.',
+  'Analytics Module aggregates all module outputs for KPI (Key Performance Indicator) and predictive insights.',
+  'Audit & Compliance Module records every critical action across modules.',
+]
