@@ -4,7 +4,7 @@ function HomePage() {
   return (
     <UnderDevelopment
       title="Home Dashboard"
-      subtitle="Welcome to Smart Campus platform. Navigation header se aap sabhi modules aur documentation pages par directly ja sakte hain."
+      subtitle="Welcome to the Smart Campus platform. Use the navigation header to access all modules and documentation pages directly."
     />
   )
 }
