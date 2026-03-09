@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
+import { createContext, useContext, useState, useEffect, type ReactNode } from 'react'
 
 export type UserRole = 
   | 'customer' 
@@ -41,7 +41,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setIsLoading(false)
   }, [])
 
-  const login = async (email: string, password: string) => {
+  const login = async (email: string, _password: string) => {
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000))
     
@@ -58,7 +58,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     localStorage.setItem('campus360_user', JSON.stringify(mockUser))
   }
 
-  const register = async (name: string, email: string, password: string, role: UserRole) => {
+  const register = async (name: string, email: string, _password: string, role: UserRole) => {
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000))
     

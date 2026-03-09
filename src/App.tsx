@@ -3,6 +3,8 @@ import { AuthProvider } from './contexts/AuthContext'
 import AppLayout from './layouts/AppLayout'
 import HomePage from './pages/HomePage'
 import DocumentationPage from './pages/Documentation'
+import TestLoginPage from './pages/auth/TestLoginPage'
+import TestRegisterPage from './pages/auth/TestRegisterPage'
 import AnalyticsPage from './pages/modules/AnalyticsPage'
 import AssignmentPage from './pages/modules/AssignmentPage'
 import AuditCompliancePage from './pages/modules/AuditCompliancePage'
@@ -24,6 +26,8 @@ function App() {
         <Routes>
           <Route path="/" element={<AppLayout />}>
             <Route index element={<HomePage />} />
+            <Route path="login" element={<TestLoginPage />} />
+            <Route path="register" element={<TestRegisterPage />} />
             <Route path="docs" element={<DocumentationPage />} />
             <Route path="Docs" element={<DocumentationPage />} />
             <Route path="modules/user-access" element={<UserAccessPage />} />
